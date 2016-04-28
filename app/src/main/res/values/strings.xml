@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Indice Massa Corporea</string>
+
+    <string-array name="costituzione">
+        <item>Longitipo</item>
+        <item>Normotipo</item>
+        <item>Brachitipo</item>
+    </string-array>
+</resources>
