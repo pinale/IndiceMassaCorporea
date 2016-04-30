@@ -28,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
     private boolean mAutoDecrementAltezza = false;
     public int mValue;
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("SESSO", sesso);
+        outState.putInt("PESO", iPeso);
+        outState.putInt("ALTEZZA", iAltezza);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +47,22 @@ public class MainActivity extends AppCompatActivity {
         vAltezza = (TextView) findViewById(R.id.txtAltezza);
 
 
+        if (savedInstanceState != null) {
+            sesso = savedInstanceState.getString("SESSO");
+            iPeso = savedInstanceState.getInt("PESO");
+            iAltezza = savedInstanceState.getInt("ALTEZZA");
+        } else {
+            sesso = "M";
+            iPeso = 70;
+            iAltezza = 170;
+        }
+
+        vPeso.setText(String.valueOf(iPeso));
+        vAltezza.setText(String.valueOf(iAltezza));
+
+
         //inizializzazione
-        sesso = "M";
-        iPeso = 70;
-        iAltezza = 170;
+
 
         //registro i listener degli eventi
         Button btnAltezzaMeno = (Button) findViewById(R.id.btnaltezzameno);
